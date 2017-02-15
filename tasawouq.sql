@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2017 at 08:41 AM
+-- Generation Time: Feb 15, 2017 at 10:16 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -28,12 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Categories` (
   `id` tinyint(4) NOT NULL,
-  `product_id` tinyint(4) NOT NULL,
   `name` varchar(255) NOT NULL,
   `is_valid` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Categories`
+--
+
+INSERT INTO `Categories` (`id`, `name`, `is_valid`, `created_at`, `updated_at`) VALUES
+(1, 'glasses', 1, '2017-02-15', '2017-02-15');
 
 -- --------------------------------------------------------
 
@@ -70,6 +76,7 @@ CREATE TABLE `Interests` (
 
 CREATE TABLE `Products` (
   `id` tinyint(4) NOT NULL,
+  `category_id` tinyint(4) NOT NULL,
   `price` float NOT NULL,
   `quantity` int(11) NOT NULL,
   `image` text NOT NULL,
@@ -112,7 +119,7 @@ CREATE TABLE `Settings` (
 --
 
 INSERT INTO `Settings` (`id`, `title`, `main_link1`, `main_link2`, `main_link3`, `home_txt1`, `home_txt2`, `tel`, `address`, `email`, `fb`, `tw`, `rss`, `rights`) VALUES
-(1, 'Tasawouq ', 'Login', 'Sign Up', 'Contact', 'Fashions', 'Featured Collections', '002-01097250962', ' Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet cum soluta nobis eleifend cum soluta nobis eleifend option congue nihil option congue nihil doming id quod mazim placerat facer possim assum. Typi non\r\n', 'softeng.anas@gmail.com', '/cis.anas', '/cis.anas', '/cis.anas', 'Tasawouq Shop. All Rights Reserved');
+(1, 'Tasawouq', 'Login', 'Sign Up', 'Contact', 'Fashions', 'Featured Collections', '002-01097250962', ' Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet cum soluta nobis eleifend cum soluta nobis eleifend option congue nihil option congue nihil doming id quod mazim placerat facer possim assum. Typi non\r\n', 'softeng.anas@gmail.com', 'cis.anas', 'cis.anas', 'cis.anas', 'Tasawouq Shop. All Rights Reserved');
 
 -- --------------------------------------------------------
 
@@ -130,6 +137,13 @@ CREATE TABLE `Shopping_List` (
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Shopping_List`
+--
+
+INSERT INTO `Shopping_List` (`id`, `user_id`, `product_id`, `quantity`, `total_price`, `is_valid`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 2, 120.5, 1, '2017-02-14', '2017-02-14');
 
 -- --------------------------------------------------------
 
@@ -175,8 +189,9 @@ CREATE TABLE `Users` (
 
 INSERT INTO `Users` (`id`, `fname`, `lname`, `password`, `birthday`, `job`, `email`, `credit_limit`, `address`, `interests`, `is_admin`, `is_valid`, `created_at`, `updated_at`) VALUES
 (1, 'anas', 'hossam', '72019bbac0b3dac88beac9ddfef0ca808919104f', '1992-03-17', '', 'admin@tasawouq.com', 1000, '', '', 1, 1, '2017-02-07 22:00:00', '2017-02-07 22:00:00'),
-(2, 'ahmed', 'samir', '72019bbac0b3dac88beac9ddfef0ca808919104f', '2017-02-01', '', 'ahmed@yahoo.com', 1000, '', '', 0, 0, '2017-02-09 22:00:00', '2017-02-09 22:00:00'),
-(14, 'abdallah', 'ghanim', '72019bbac0b3dac88beac9ddfef0ca808919104f', '1992-03-01', 'softeng', 'abdo@yahoo.com', 123.32, 'manzala', NULL, 0, 1, '2017-02-13 18:09:20', '2017-02-13 18:09:20');
+(2, 'ahmed', 'samir', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '2017-02-01', '', 'ahmed@yahoo.com', 1000, '', '', 0, 0, '2017-02-09 22:00:00', '2017-02-09 22:00:00'),
+(14, 'abdallah', 'ghanim', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '1992-03-01', 'softeng', 'abdo@yahoo.com', 123.32, 'manzala', NULL, 0, 1, '2017-02-13 18:09:20', '2017-02-13 18:09:20'),
+(15, 'maha', 'elrayis', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '1993-01-01', 'doctor', 'maha@ss.com', 0, 'portsaid', '', 0, 1, '2017-02-14 14:36:37', '2017-02-14 14:36:37');
 
 --
 -- Indexes for dumped tables
@@ -239,7 +254,7 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Categories`
 --
 ALTER TABLE `Categories`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `Contacts`
 --
@@ -264,7 +279,7 @@ ALTER TABLE `Settings`
 -- AUTO_INCREMENT for table `Shopping_List`
 --
 ALTER TABLE `Shopping_List`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `Sub_categories`
 --
@@ -274,7 +289,29 @@ ALTER TABLE `Sub_categories`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Products`
+--
+ALTER TABLE `Products`
+  ADD CONSTRAINT `con` FOREIGN KEY (`id`) REFERENCES `Categories` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Shopping_List`
+--
+ALTER TABLE `Shopping_List`
+  ADD CONSTRAINT `con3` FOREIGN KEY (`id`) REFERENCES `Users` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Sub_categories`
+--
+ALTER TABLE `Sub_categories`
+  ADD CONSTRAINT `co2` FOREIGN KEY (`id`) REFERENCES `Categories` (`id`) ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
