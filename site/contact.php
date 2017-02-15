@@ -1,10 +1,6 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<?php session_start();
+
+<?php
+session_start();
 require_once '../config.php';
 require_once '../functions.php';
 
@@ -828,64 +824,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
  <!--//end-bottom-->
 		<!--start-footer-->
-	     <div class="footer">
-<!--		   <div class="container">-->
-<!--			<div class="footer-top">-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>About Us</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Who We Are</a></li>-->
-<!--						<li><a href="contact.php">Contact Us</a></li>-->
-<!--						<li><a href="#">Our Sites</a></li>-->
-<!--						<li><a href="#">In The News</a></li>-->
-<!--						<li><a href="#">Carrers</a></li>					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>Your Account</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="account.php">Your Account</a></li>-->
-<!--						<li><a href="#">Personal Information</a></li>-->
-<!--						<li><a href="contact.php">Addresses</a></li>-->
-<!--						<li><a href="#">Discount</a></li>-->
-<!--						<li><a href="#">Track your order</a></li>					 					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>Shopping</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Accesories</a></li>-->
-<!--						<li><a href="#">Books</a></li>-->
-<!--						<li><a href="#">Cloths</a></li>-->
-<!--						<li><a href="#">Bags</a></li>-->
-<!--						<li><a href="#">Shoes</a></li>					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left ">-->
-<!--					<h3>Categories</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Sports Shoes</a></li>-->
-<!--						<li><a href="#">Casual Shorts</a></li>-->
-<!--						<li><a href="#">Formal Shoes</a></li>-->
-<!--						<li><a href="#">Party Wear</a></li>-->
-<!--						<li><a href="#">Ethnic Wear</a></li>				 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left lost">-->
-<!--					<h3>Life Style</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Spa</a></li>-->
-<!--						<li><a href="#">Beauty</a></li>-->
-<!--						<li><a href="#">Travel</a></li>-->
-<!--						<li><a href="#">Food</a></li>-->
-<!--						<li><a href="#">Trends</a></li>					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="clearfix"> </div>-->
-<!--			</div>-->
-<!--				-->
-<!--		</div>-->
-	</div>
+
 	<ul class="socials">
         <li><a class="soc1" href="http://www.facebook.com/<?=$setting["fb"]?>"></a></li>
         <li><a class="soc2" href="http://www.twitter.com/<?=$setting["tw"]?>"></a></li>
@@ -894,7 +833,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <!--/start-copyright-->
 	 <div class="copy">
 		<div class="container">
-			<p>&copy; 2017 <?=$setting["rights"]?> | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
+			<p>&copy; <?=date("Y")?> <?=$setting["rights"]?> | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
 		</div>
 	</div>
 	 <!--//end-copyright-->

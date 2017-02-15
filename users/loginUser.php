@@ -7,6 +7,11 @@ require_once '../functions.php';
 
 if(isset($_POST)) {
     $email = clearInputs($_POST['email']);
+//    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//        $emailErr = "Invalid email format";
+//        $_SESSION['error']=$emailErr;
+//    }else
+//        unset($_SESSION['error']);
     $password = sha1(clearInputs($_POST['password']));
 }
 

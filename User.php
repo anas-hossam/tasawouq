@@ -30,11 +30,11 @@ require_once 'config.php';
         global $con;
     }
     function __get($name){
-        return $this->$name;
+        return $this->name;
     }
 
     function __set($name,$value){
-        $this->$name = $value;
+        $this->name = $value;
     }
     function getUsers() {
           global $con;
@@ -133,7 +133,7 @@ require_once 'config.php';
      function loginUser() {
          global $con;
 //        $mysqli=  get_db();
-         $query="select * from Users where email=? and password=?";
+         $query="select * from Users where email=? and password=? and is_valid=1";
 
          $stmt = $con->prepare($query);
          if(!$stmt){

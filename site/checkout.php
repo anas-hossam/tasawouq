@@ -4,11 +4,18 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<?php session_start();?>
+<?php session_start();
+require_once '../config.php';
+require_once '../functions.php';
+
+$settings=new Settings();
+$settings=$settings->getAll();
+$setting=$settings[0];
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Tasawouq Shop</title>
+	<title><?=$setting["title"]?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Nuevo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -49,13 +56,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header_top">
 			<div class="top_right">
                 <ul>
-                    <li><?php if(isset($_SESSION['loggedUser'])) echo '<a href="">'.$_SESSION['loggedUser']['fname'].'</a>'; else echo '<a href="account.php">Login</a>'?></li>
-                    <li><?php if(isset($_SESSION['loggedUser'])) echo '<a href="../users/logout.php">Logout</a>'; else echo '<a href="account.php">Sign Up</a>'?></li>
-                    <li><a href="contact.php">Contact</a></li>
+                    <li><?php if(isset($_SESSION['loggedUser'])) echo '<a href="">'.$_SESSION['loggedUser']['fname'].'</a>'; else echo '<a href="account.php">'.$setting["main_link1"].'</a>'?></li>
+                    <li><?php if(isset($_SESSION['loggedUser'])) echo '<a href="../users/logout.php">Logout</a>'; else echo '<a href="account.php">'.$setting["main_link2"].'</a>'?></li>
+                    <li><a href="contact.php"><?=$setting["main_link3"]?></a></li>
                 </ul>
 			</div>
 			<div class="top_left">
-				<h6><span></span> Call us : 032 2352 782</h6>
+				<h6><span></span> Call us : <?=$setting["tel"]?></h6>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -67,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header">
 	  <div class="head-t">
 		 <div class="logo">
-			  <a href="index.php"><h1>Nuevo <span>Shop</span></h1> </a>
+			  <a href="index.php"><h1><?=$setting["title"]?> <span>Shop</span></h1> </a>
 		  </div>
 		  <div class="header_right">
 			<div class="cart box_1">
@@ -867,75 +874,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
  <!--//end-bottom-->
 		<!--start-footer-->
-	     <div class="footer">
-<!--		   <div class="container">-->
-<!--			<div class="footer-top">-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>About Us</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Who We Are</a></li>-->
-<!--						<li><a href="contact.php">Contact Us</a></li>-->
-<!--						<li><a href="#">Our Sites</a></li>-->
-<!--						<li><a href="#">In The News</a></li>-->
-<!--						<li><a href="#">Carrers</a></li>					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>Your Account</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="account.php">Your Account</a></li>-->
-<!--						<li><a href="#">Personal Information</a></li>-->
-<!--						<li><a href="contact.php">Addresses</a></li>-->
-<!--						<li><a href="#">Discount</a></li>-->
-<!--						<li><a href="#">Track your order</a></li>					 					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>Shopping</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Accesories</a></li>-->
-<!--						<li><a href="#">Books</a></li>-->
-<!--						<li><a href="#">Cloths</a></li>-->
-<!--						<li><a href="#">Bags</a></li>-->
-<!--						<li><a href="#">Shoes</a></li>					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left ">-->
-<!--					<h3>Categories</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Sports Shoes</a></li>-->
-<!--						<li><a href="#">Casual Shorts</a></li>-->
-<!--						<li><a href="#">Formal Shoes</a></li>-->
-<!--						<li><a href="#">Party Wear</a></li>-->
-<!--						<li><a href="#">Ethnic Wear</a></li>				 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left lost">-->
-<!--					<h3>Life Style</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Spa</a></li>-->
-<!--						<li><a href="#">Beauty</a></li>-->
-<!--						<li><a href="#">Travel</a></li>-->
-<!--						<li><a href="#">Food</a></li>-->
-<!--						<li><a href="#">Trends</a></li>					 -->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="clearfix"> </div>-->
-<!--			</div>-->
-<!--				-->
-<!--		</div>-->
-	</div>
-	<ul class="socials">
-				    <li><a class="soc1" href="#"></a></li>
-				    <li><a class="soc2" href="#"></a></li>
-				    <li><a class="soc3" href="#"></a></li>
-				</ul>
+
+<ul class="socials">
+    <li><a class="soc1" href="http://www.facebook.com/<?=$setting["fb"]?>"></a></li>
+    <li><a class="soc2" href="http://www.twitter.com/<?=$setting["tw"]?>"></a></li>
+    <li><a class="soc3" href="http://www.rss.com/<?=$setting["rss"]?>"></a></li>
+</ul>
 	 <!--/start-copyright-->
-	 <div class="copy">
-		<div class="container">
-			<p>&copy; 2015 Nuevo Shop. All Rights Reserved | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
-		</div>
-	</div>
+<div class="copy">
+    <div class="container">
+        <p>&copy; <?=date("Y")?> <?=$setting["rights"]?> | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
+    </div>
+</div>
 	 <!--//end-copyright-->
 	<!--end-footer-->
  <!--//end-content-->

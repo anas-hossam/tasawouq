@@ -84,13 +84,7 @@ desired effect
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
 
-          <!-- Menu register-->
-            <?php if(!isset($_SESSION['logged'])){?>
-          <li >
-            <a href="register.php">Register</a>
-          </li>
-            <?php }?>
-          <!-- register Menu -->
+
           <!--@else-->
           <!-- User Account Menu -->
           <li class="dropdown user user-menu" id="usermenu">
@@ -189,17 +183,6 @@ desired effect
         <li><a href="<?=PATH?>settings"><i class="fa fa-gears"></i> <span>Settings</span></a></li>
         <!--<li><a href="{{url('sectest')}}"><i class="fa fa-google"></i> <span>Testimonial</span></a></li>-->
         <li><a href="<?=PATH?>contacts"><i class="fa fa-location-arrow"></i> <span>Contacts</span></a></li>
-        <!--<li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li> -->
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -232,86 +215,8 @@ desired effect
     <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
   </footer>
 
-  <!-- Control Sidebar -->
-  {{--<aside class="control-sidebar control-sidebar-dark">--}}
-    {{--<!-- Create the tabs -->--}}
-    {{--<ul class="nav nav-tabs nav-justified control-sidebar-tabs">--}}
-      {{--<li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>--}}
-      {{--<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>--}}
-    {{--</ul>--}}
-    {{--<!-- Tab panes -->--}}
-    {{--<div class="tab-content">--}}
-      {{--<!-- Home tab content -->--}}
-      {{--<div class="tab-pane active" id="control-sidebar-home-tab">--}}
-        {{--<h3 class="control-sidebar-heading">Recent Activity</h3>--}}
-        {{--<ul class="control-sidebar-menu">--}}
-          {{--<li>--}}
-            {{--<a href="javascript:;">--}}
-              {{--<i class="menu-icon fa fa-birthday-cake bg-red"></i>--}}
-
-              {{--<div class="menu-info">--}}
-                {{--<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>--}}
-
-                {{--<p>Will be 23 on April 24th</p>--}}
-              {{--</div>--}}
-            {{--</a>--}}
-          {{--</li>--}}
-        {{--</ul>--}}
-        {{--<!-- /.control-sidebar-menu -->--}}
-
-        {{--<h3 class="control-sidebar-heading">Tasks Progress</h3>--}}
-        {{--<ul class="control-sidebar-menu">--}}
-          {{--<li>--}}
-            {{--<a href="javascript:;">--}}
-              {{--<h4 class="control-sidebar-subheading">--}}
-                {{--Custom Template Design--}}
-                {{--<span class="pull-right-container">--}}
-                  {{--<span class="label label-danger pull-right">70%</span>--}}
-                {{--</span>--}}
-              {{--</h4>--}}
-
-              {{--<div class="progress progress-xxs">--}}
-                {{--<div class="progress-bar progress-bar-danger" style="width: 70%"></div>--}}
-              {{--</div>--}}
-            {{--</a>--}}
-          {{--</li>--}}
-        {{--</ul>--}}
-        {{--<!-- /.control-sidebar-menu -->--}}
-
-      {{--</div>--}}
-      {{--<!-- /.tab-pane -->--}}
-      {{--<!-- Stats tab content -->--}}
-      {{--<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>--}}
-      {{--<!-- /.tab-pane -->--}}
-      {{--<!-- Settings tab content -->--}}
-      {{--<div class="tab-pane" id="control-sidebar-settings-tab">--}}
-        {{--<form method="post">--}}
-          {{--<h3 class="control-sidebar-heading">General Settings</h3>--}}
-
-          {{--<div class="form-group">--}}
-            {{--<label class="control-sidebar-subheading">--}}
-              {{--Report panel usage--}}
-              {{--<input type="checkbox" class="pull-right" checked>--}}
-            {{--</label>--}}
-
-            {{--<p>--}}
-              {{--Some information about this general settings option--}}
-            {{--</p>--}}
-          {{--</div>--}}
-          {{--<!-- /.form-group -->--}}
-        {{--</form>--}}
-      {{--</div>--}}
-      {{--<!-- /.tab-pane -->--}}
-    {{--</div>--}}
-  {{--</aside>--}}
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  {{--<div class="control-sidebar-bg"></div>--}}
 </div>
 <!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
 <script src="<?=PATH?>adminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -323,9 +228,6 @@ desired effect
 <script src="<?=PATH?>adminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?=PATH?>adminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
 </body>
 </html>

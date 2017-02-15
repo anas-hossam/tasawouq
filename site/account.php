@@ -1,10 +1,6 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<?php session_start();
+
+<?php
+session_start();
 require_once '../config.php';
 require_once '../functions.php';
 
@@ -25,6 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />	
 <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
 <!-- start menu -->
 <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/megamenu.js"></script>
@@ -749,11 +746,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="address">
 						<span>First Name</span>
-						<input type="text" id="fname" name="fname"/>
+						<input type="text" id="fnameid" name="fname"/>
 					</div>
 					<div class="address">
 						<span>Last Name</span>
-						<input type="text" id="lname" name="lname"/>
+						<input type="text" id="lnameid" name="lname"/>
 					</div>
 					<div class="address">
 						<span>Email Address</span>
@@ -765,7 +762,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="address">
 						<span>Re-enter Password</span>
-						<input type="password" id="password" name="repassword"/>
+						<input type="password" id="repassword" name="repassword"/>
 					</div>
 						<div class="address">
 							<span>Birthday</span>
@@ -788,10 +785,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					</form>
                     <script>
+                        $.validator.setDefaults({
+                            submitHandler: function() {
+                                alert("submitted!");
+                            }
+                        });
                         $(function () {
+                            $("#myRegisterForm").validate({
+                                rules:{
+                                    fname: {
+                                        required: true,
+                                        minWords:3
+                                    },
+                                    lname: {
+                                        required: true,
+                                        minWords:3
+                                    },
+                                    password: {
+                                        required: true,
+                                        minlength: 8
+                                    },
+                                    repassword: {
+                                        required: true,
+                                        minlength: 8,
+                                        equalTo: "#password"
+                                    },
+                                    email:{
+                                        required: true,
+                                        email: true
+                                    }
+                                },
+                                messages: {
+                                    fname: {
+                                        required:"<span style='color: red;'>Please enter your firstname</span>",
+                                        minWords:"<span style='color: red;'>Please enter at least 3 charachters</span>"
+                                    },
+                                    lname: {
+                                        required:"<span style='color: red;'>Please enter your lastname</span>",
+                                        minWords:"<span style='color: red;'>Please enter at least 3 charachters</span>"
+
+                                    },
+                                    password: {
+                                        required: "<span style='color: red;'>Please provide a password</span>",
+                                        minlength: "<span style='color: red;'>Your password must be at least 8 characters long</span>"
+                                    },
+                                    repassword: {
+                                        required: "<span style='color: red;'>Please provide a password</span>",
+                                        minlength: "<span style='color: red;'>Your password must be at least 8 characters long</span>",
+                                        equalTo: "<span style='color: red;'>Please enter the same password as above</span>"
+                                    },
+                                    email: "<span style='color: red;'>Please enter a valid email address</span>"
+                                }
+
+                            });
                             $("#register").on("click",function (e) {
-//                                alert("register")
-//                                $(this).preventDefault();
+//
+
                                $.ajax({
                                    url:"../users/register.php",
                                    method:"POST",
@@ -822,8 +871,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="address">
 							<span>Email Address</span>
-							<input type="text" name="email" id="email">
-						</div>
+                            <input type="text" name="email" id="emailLog">
+
+
+                        </div>
 						<div class="address">
 							<span>Password</span>
 							<input type="password" name="password" id="password">
@@ -834,8 +885,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					 </form>
                     <script>
+                        $.validator.setDefaults({
+                            submitHandler: function() {
+                                alert("submitted!");
+                            }
+                        });
+
                         $(function () {
+                            $("#myLoginForm").validate({
+                                rules:{
+                                    email:{
+                                        required: true,
+                                        email: true
+                                    },
+                                    password:{
+                                        minlength: 8,
+                                        required: true
+                                    }
+                                },
+                                messages: {
+                                    password: {
+                                        required: "<span style='color: red;'>Please provide a password</span>",
+                                        minlength: "<span style='color: red;'>Your password must be at least 8 characters long</span>"
+                                    },
+                                    email: "<span style='color: red;'>Please enter a valid email address</span>"
+                                }
+
+                            });
+
                             $("#login").on("click",function (e) {
+
+
 //                                alert("login")
 //                                $(this).preventDefault();
                                 $.ajax({
@@ -902,64 +982,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
  <!--//end-bottom-->
 		<!--start-footer-->
-	     <div class="footer">
-<!--		   <div class="container">-->
-<!--			<div class="footer-top">-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>About Us</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Who We Are</a></li>-->
-<!--						<li><a href="contact.php">Contact Us</a></li>-->
-<!--						<li><a href="#">Our Sites</a></li>-->
-<!--						<li><a href="#">In The News</a></li>-->
-<!--						<li><a href="#">Carrers</a></li>-->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>Your Account</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="account.php">Your Account</a></li>-->
-<!--						<li><a href="#">Personal Information</a></li>-->
-<!--						<li><a href="contact.php">Addresses</a></li>-->
-<!--						<li><a href="#">Discount</a></li>-->
-<!--						<li><a href="#">Track your order</a></li>-->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left">-->
-<!--					<h3>Shopping</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Accesories</a></li>-->
-<!--						<li><a href="#">Books</a></li>-->
-<!--						<li><a href="#">Cloths</a></li>-->
-<!--						<li><a href="#">Bags</a></li>-->
-<!--						<li><a href="#">Shoes</a></li>-->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left ">-->
-<!--					<h3>Categories</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Sports Shoes</a></li>-->
-<!--						<li><a href="#">Casual Shorts</a></li>-->
-<!--						<li><a href="#">Formal Shoes</a></li>-->
-<!--						<li><a href="#">Party Wear</a></li>-->
-<!--						<li><a href="#">Ethnic Wear</a></li>-->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="col-md-2 footer-left lost">-->
-<!--					<h3>Life Style</h3>-->
-<!--					<ul>-->
-<!--						<li><a href="#">Spa</a></li>-->
-<!--						<li><a href="#">Beauty</a></li>-->
-<!--						<li><a href="#">Travel</a></li>-->
-<!--						<li><a href="#">Food</a></li>-->
-<!--						<li><a href="#">Trends</a></li>-->
-<!--					</ul>-->
-<!--				</div>-->
-<!--				<div class="clearfix"> </div>-->
-<!--			</div>-->
-<!---->
-<!--		</div>-->
-	</div>
 	<ul class="socials">
 				    <li><a class="soc1" href="http://www.facebook.com/<?=$setting["fb"]?>"></a></li>
 				    <li><a class="soc2" href="http://www.twitter.com/<?=$setting["tw"]?>"></a></li>
@@ -968,7 +990,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <!--/start-copyright-->
 	 <div class="copy">
 		<div class="container">
-			<p>&copy; 2017 <?=$setting["rights"]?> | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
+			<p>&copy; <?=date("Y")?> <?=$setting["rights"]?> | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
 		</div>
 	</div>
 	 <!--//end-copyright-->
