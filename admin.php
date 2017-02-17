@@ -168,21 +168,22 @@ desired effect
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="<?=PATH?>users"><i class="fa fa-users"></i> <span>Users</span></a></li>
-        <li><a href=""><i class="fa fa-product-hunt"></i> <span>Products</span></a></li>
+        <li><a href="<?=PATH?>products"><i class="fa fa-product-hunt"></i> <span>Products</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-list"></i> <span>Categories</span>
+          <a href="<?=PATH?>categories"><i class="fa fa-list"></i> <span>Categories</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Sub Categories</a></li>
+              <li><a href="<?=PATH?>categories">Categories</a></li>
+            <li><a href="<?=PATH?>sub_categories">Sub Categories</a></li>
           </ul>
         </li>
         <li><a href="<?=PATH?>orders"><i class="fa fa-shopping-cart"></i> <span>Shopping Lists</span></a></li>
         <li><a href="<?=PATH?>settings"><i class="fa fa-gears"></i> <span>Settings</span></a></li>
         <!--<li><a href="{{url('sectest')}}"><i class="fa fa-google"></i> <span>Testimonial</span></a></li>-->
-        <li><a href="<?=PATH?>contacts"><i class="fa fa-location-arrow"></i> <span>Contacts</span></a></li>
+        <li><a href="<?=PATH?>contacts"><i class="fa fa-comments"></i> <span>Contacts</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

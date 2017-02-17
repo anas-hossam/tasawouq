@@ -44,7 +44,7 @@ $users=$user->getAllUsers();
                                 <ul class="dropdown-menu">
                                     <li><a href="<?=PATH?>users/edit.php/?id=<?=$user['id']?>"><i class="pull-right glyphicon glyphicon-edit"></i>edit</a></li>
 <!--                                    <hr>-->
-                                    <li><a  id="delUser" href="" name="<?=$user['id']?>"><i class="pull-right glyphicon glyphicon-remove"></i>delete</a></li>
+                                    <li><a  class="delUser" href="" name="<?=$user['id']?>"><i class="pull-right glyphicon glyphicon-remove"></i>delete</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -70,10 +70,10 @@ $users=$user->getAllUsers();
     $(function () {
         $('.content').append($('#users'));
         $('#example1').DataTable();
-        $('#delUser').on("click",function () {
+        $('.delUser').on("click",function () {
 //            alert('ok')
             $.ajax({
-                url: "/users/delete.php/?id="+$("#delUser").attr('name'),
+                url: "/users/delete.php/?id="+$(this).attr('name'),
                 method: "GET",
                 success: function (obj) {
                     console.log(obj);

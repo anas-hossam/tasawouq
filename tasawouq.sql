@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 15, 2017 at 10:16 PM
+-- Generation Time: Feb 16, 2017 at 11:20 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -39,7 +39,13 @@ CREATE TABLE `Categories` (
 --
 
 INSERT INTO `Categories` (`id`, `name`, `is_valid`, `created_at`, `updated_at`) VALUES
-(1, 'glasses', 1, '2017-02-15', '2017-02-15');
+(5, 'Watches', 1, '2017-02-15', '2017-02-15'),
+(9, 'Glasses', 1, '2017-02-16', '2017-02-16'),
+(10, 'Shoes', 1, '2017-02-16', '2017-02-16'),
+(12, 'Bags', 1, '2017-02-16', '2017-02-16'),
+(13, 'test', 0, '2017-02-16', '2017-02-16'),
+(14, 'Men\'s Jackets', 1, '2017-02-16', '2017-02-16'),
+(15, 'Hand Bags', 1, '2017-02-16', '2017-02-16');
 
 -- --------------------------------------------------------
 
@@ -160,6 +166,20 @@ CREATE TABLE `Sub_categories` (
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `Sub_categories`
+--
+
+INSERT INTO `Sub_categories` (`id`, `category_id`, `name`, `is_valid`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Lee', 1, '2017-02-16', '2017-02-16'),
+(2, 5, 'Anouk', 1, '2017-02-16', '2017-02-16'),
+(3, 10, 'addidas', 0, '2017-02-16', '2017-02-16'),
+(4, 12, 'cameri', 0, '2017-02-16', '2017-02-16'),
+(5, 5, 'tempore', 1, '2017-02-16', '2017-02-16'),
+(6, 5, 'vishud', 1, '2017-02-16', '2017-02-16'),
+(7, 5, 'amari', 1, '2017-02-16', '2017-02-16'),
+(8, 5, 'shree', 1, '2017-02-16', '2017-02-16');
+
 -- --------------------------------------------------------
 
 --
@@ -254,7 +274,7 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Categories`
 --
 ALTER TABLE `Categories`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `Contacts`
 --
@@ -284,7 +304,7 @@ ALTER TABLE `Shopping_List`
 -- AUTO_INCREMENT for table `Sub_categories`
 --
 ALTER TABLE `Sub_categories`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `Users`
 --
@@ -295,22 +315,10 @@ ALTER TABLE `Users`
 --
 
 --
--- Constraints for table `Products`
---
-ALTER TABLE `Products`
-  ADD CONSTRAINT `con` FOREIGN KEY (`id`) REFERENCES `Categories` (`id`) ON UPDATE CASCADE;
-
---
 -- Constraints for table `Shopping_List`
 --
 ALTER TABLE `Shopping_List`
   ADD CONSTRAINT `con3` FOREIGN KEY (`id`) REFERENCES `Users` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `Sub_categories`
---
-ALTER TABLE `Sub_categories`
-  ADD CONSTRAINT `co2` FOREIGN KEY (`id`) REFERENCES `Categories` (`id`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

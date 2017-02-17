@@ -53,6 +53,28 @@ class Shopping_List {
 
     }
 
+    function getByUserId($user_id) {
+        global $con;
+        $userOrders=[];
+        $query="SELECT * FROM `Shopping_List` WHERE user_id=? and is_valid=1";
+        $stmt=$con->prepare($query);
+//        var_dump($stmt);
+        @$stmt->bind_param('i',$user_id);
+        $stmt->execute();
+        if(!$stmt){
+            echo "preparation failed ".$con->errno." : ".$con->error."<br>";
+        }
+        $result=$stmt->get_result();
+        if(!$result)
+            echo 'bind falied'.$stmt->error;
+
+        while ($row=$result->fetch_array())
+            array_push ($userOrders, $row);
+//        var_dump($userOrders);
+        return $userOrders;
+
+    }
+
     function update() {
         global $con;
         /*
@@ -73,10 +95,11 @@ class Shopping_List {
     function insert() {
 
         global $con;
-        $query = "insert into Shopping_List (id, user_id, product_id, quantity, total_price, is_valid, created_at, updated_at) values(null,?,?,?,?,?,?,?)";
+        $query = "insert into Shopping_List (id, user_id, product_id, quantity, total_price, is_valid, created_at, updated_at) values(null,?,?,?,?,1,?,?)";
+        var_dump($query);
         $stmt = $con->prepare($query);
 
-        $res=$stmt->bind_param('iisdiss',  $this->user_id,  $this->product_id,  $this->quantity,  $this->total_price,  $this->is_valid,  $this->created_at,  $this->updated_at);
+        $res=$stmt->bind_param('iiidss',  $this->user_id,  $this->product_id,  $this->quantity,  $this->total_price, $this->created_at, $this->updated_at);
 
 
         if(!$res)
