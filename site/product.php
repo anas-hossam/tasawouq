@@ -1,7 +1,36 @@
 
 <?php
-session_start();require_once '../config.php';
+session_start();
+require_once '../config.php';
 require_once '../functions.php';
+require_once '../product.php';
+
+$catObj = new Categories();
+$subCatObj = new Sub_categories();
+
+
+$products=product::getProduct();
+
+if(isset($_POST)&& !empty($_POST['data']))
+{
+//    echo 'herrrrrrrrrrrrrrrrr';
+//    var_dump($_POST['data']);
+//    exit();
+//    $decoded_text=html_entity_decode($_POST['data']);
+//    $decoded_text=str_replace('&quot;', '"', $decoded_text);
+
+    $decoded_text=utf8_encode($_POST['data']);
+
+//    var_dump($decoded_text);
+//    exit();
+    $products=json_decode(stripcslashes($decoded_text),true);
+//    echo json_last_error();
+    var_dump($products);
+    exit();
+}
+$catObj = new Categories();
+$subCatObj = new Sub_categories();
+
 
 $settings=new Settings();
 $settings=$settings->getAll();
@@ -95,648 +124,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>	
 	    </div>
 		<!--start-header-menu-->
-		<ul class="megamenu skyblue">
-			<li class="active grid"><a class="color1" href="index.php">Home</a></li>
-			<li class="grid"><a class="color2" href="#">new arrivals</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">Pools &amp; Tees</a></li>
-									<li><a href="product.php">shirts</a></li>
-									<li><a href="product.php">shorts</a></li>
-									<li><a href="product.php">twinsets</a></li>
-									<li><a href="product.php">kurts</a></li>
-									<li><a href="product.php">jackets</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">Handbag</a></li>
-									<li><a href="product.php">Slingbags</a></li>
-									<li><a href="product.php">Clutches</a></li>
-									<li><a href="product.php">Totes</a></li>
-									<li><a href="product.php">Wallets</a></li>
-									<li><a href="product.php">Laptopbags</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-									<li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">Belts</a></li>
-									<li><a href="product.php">Pens</a></li>
-									<li><a href="product.php">Eyeglasses</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">Watches</a></li>
-									<li><a href="product.php">Jewellery</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
-			<li><a class="color4" href="#">TUXEDO</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">Pools &amp; Tees</a></li>
-									<li><a href="product.php">shirts</a></li>
-									<li><a href="product.php">shorts</a></li>
-									<li><a href="product.php">twinsets</a></li>
-									<li><a href="product.php">kurts</a></li>
-									<li><a href="product.php">jackets</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">Handbag</a></li>
-									<li><a href="product.php">Slingbags</a></li>
-									<li><a href="product.php">Clutches</a></li>
-									<li><a href="product.php">Totes</a></li>
-									<li><a href="product.php">Wallets</a></li>
-									<li><a href="product.php">Laptopbags</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-								    <li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">Belts</a></li>
-									<li><a href="product.php">Pens</a></li>
-									<li><a href="product.php">Eyeglasses</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">Watches</a></li>
-									<li><a href="product.php">Jewellery</a></li>
-								</ul>	
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>				
-				<li><a class="color5" href="#">SWEATER</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">Pools &amp; Tees</a></li>
-									<li><a href="product.php">shirts</a></li>
-									<li><a href="product.php">shorts</a></li>
-									<li><a href="product.php">twinsets</a></li>
-									<li><a href="product.php">kurts</a></li>
-									<li><a href="product.php">jackets</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">Handbag</a></li>
-									<li><a href="product.php">Slingbags</a></li>
-									<li><a href="product.php">Clutches</a></li>
-									<li><a href="product.php">Totes</a></li>
-									<li><a href="product.php">Wallets</a></li>
-									<li><a href="product.php">Laptopbags</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-									<li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">Belts</a></li>
-									<li><a href="product.php">Pens</a></li>
-									<li><a href="product.php">Eyeglasses</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">Watches</a></li>
-									<li><a href="product.php">Jewellery</a></li>
-								</ul>	
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
-				<li><a class="color6" href="#">SHOES</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">Pools &amp; Tees</a></li>
-									<li><a href="product.php">shirts</a></li>
-									<li><a href="product.php">shorts</a></li>
-									<li><a href="product.php">twinsets</a></li>
-									<li><a href="product.php">kurts</a></li>
-									<li><a href="product.php">jackets</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">Handbag</a></li>
-									<li><a href="product.php">Slingbags</a></li>
-									<li><a href="product.php">Clutches</a></li>
-									<li><a href="product.php">Totes</a></li>
-									<li><a href="product.php">Wallets</a></li>
-									<li><a href="product.php">Laptopbags</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-									<li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">Belts</a></li>
-									<li><a href="product.php">Pens</a></li>
-									<li><a href="product.php">Eyeglasses</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">Watches</a></li>
-									<li><a href="product.php">Jewellery</a></li>
-								</ul>	
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>				
-			
-				<li><a class="color7" href="#">GLASSES</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">Pools &amp; Tees</a></li>
-									<li><a href="product.php">shirts</a></li>
-									<li><a href="product.php">shorts</a></li>
-									<li><a href="product.php">twinsets</a></li>
-									<li><a href="product.php">kurts</a></li>
-									<li><a href="product.php">jackets</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">Handbag</a></li>
-									<li><a href="product.php">Slingbags</a></li>
-									<li><a href="product.php">Clutches</a></li>
-									<li><a href="product.php">Totes</a></li>
-									<li><a href="product.php">Wallets</a></li>
-									<li><a href="product.php">Laptopbags</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-									<li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">Belts</a></li>
-									<li><a href="product.php">Pens</a></li>
-									<li><a href="product.php">Eyeglasses</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">Watches</a></li>
-									<li><a href="product.php">Jewellery</a></li>
-								</ul>	
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>				
-			
-				<li><a class="color8" href="#">T-SHIRT</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">trends</a></li>
-									<li><a href="product.php">sale</a></li>
-									<li><a href="product.php">style videos</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">trends</a></li>
-									<li><a href="product.php">sale</a></li>
-									<li><a href="product.php">style videos</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-									<li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">trends</a></li>
-									<li><a href="product.php">sale</a></li>
-									<li><a href="product.php">style videos</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
-				<li><a class="color9" href="#">WATCHES</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Clothing</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">brands</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>kids</h4>
-								<ul>
-									<li><a href="product.php">trends</a></li>
-									<li><a href="product.php">sale</a></li>
-									<li><a href="product.php">style videos</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Bags</h4>
-								<ul>
-									<li><a href="product.php">trends</a></li>
-									<li><a href="product.php">sale</a></li>
-									<li><a href="product.php">style videos</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>account</h4>
-								<ul>
-									<li><a href="account.php">login</a></li>
-									<li><a href="account.php">create an account</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-									<li><a href="product.php">my shopping bag</a></li>
-									<li><a href="product.php">brands</a></li>
-									<li><a href="product.php">create wishlist</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Accessories</h4>
-								<ul>
-									<li><a href="product.php">trends</a></li>
-									<li><a href="product.php">sale</a></li>
-									<li><a href="product.php">style videos</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Footwear</h4>
-								<ul>
-									<li><a href="product.php">new arrivals</a></li>
-									<li><a href="product.php">men</a></li>
-									<li><a href="product.php">women</a></li>
-									<li><a href="product.php">accessories</a></li>
-									<li><a href="product.php">kids</a></li>
-									<li><a href="product.php">style videos</a></li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
-		 </ul> 
+        <ul class="megamenu skyblue">
+            <li class="active grid"><a class="color1" href="index.php">Home</a></li>
+            <?php
+
+            foreach ($catObj->getAll() as $key => $val) {
+                $id_val = $val['id'];
+                if($key<7) {
+                    ?>
+                    <li class="grid"><a class="color2" href="#"><?= $val['name'] ?></a>
+                        <div class="megapanel">
+                            <div class="row">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4><?= $val['name'] ?></h4>
+                                        <ul>
+
+                                            <?php
+                                            $counter = 0;
+                                            foreach ($subCatObj->getSubcategoryByCategoryId($id_val) as $key => $value) {
+                                                if ($counter > 5) {
+                                                    ?>
+                                                    </ul></div></div>
+                                                    <div class="col1"><div class="h_nav"><h4><?=$val['name']?></h4><ul>
+                                                            <?php
+                                                    $counter = 0;
+                                                } ?>
+                                                <li><a href="product.php?cat_id=<?=$val['id']?>&subCat_id=<?=$value['id']?>"><?=$value['name']?></a></li>
+                                                <?php
+                                                $counter++;
+                                            } ?>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col2"></div>
+                                <div class="col1"></div>
+                                <div class="col1"></div>
+                                <div class="col1"></div>
+                                <div class="col1"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
+                }
+                }?>
+        </ul>
 	</div>
 </div>
 </div>
@@ -745,182 +180,107 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="products">
 		<div class="container">
 			<div class="products-grids">
-				<div class="col-md-8 products-grid-left">
-					<div class="products-grid-lft">
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p5.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Elevation Jacket</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p4.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Running Shoes</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p6.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Tote Bag</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
+				<div class="col-md-8 products-grid-left" id="mainProducts">
+
+				        <?php
+
+                        $length=count($products);
+                        $inx=0;
+//                        echo $length;
+                        for($i=0;$i<$length/3;$i++){
+
+                        ?>
+						<div class="products-grid-lft">
+
+                            <?php
+
+                            for($j=0;$j<3;$j++){
+                                $inx=$j+($i*3);
+                            if($inx < $length) {
+                                ?>
+                                <div class="products-grd">
+                                    <div class="p-one simpleCart_shelfItem prd">
+                                        <a href="single.php?id=<?= $products[$inx]['id'] ?>">
+                                            <img src="<?= $products[$inx]['image'] ?>" alt="" class="img-responsive"/>
+                                        </a>
+                                        <h4><?= $products[$inx]['name'] ?></h4>
+                                        <p><a class="item_add" href="#"><i
+                                                        class="glyphicon glyphicon-shopping-cart"></i> <span
+                                                        class=" item_price valsa">$729</span></a></p>
+                                        <div class="pro-grd">
+                                            <a href="single.php">Quick View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            }?>
+
 						<div class="clearfix"> </div>
 					</div>
-					<div class="products-grid-lft">
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p9.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Lifestyle Shoes</h4>	
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p1.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>New style Bag</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p3.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Rim Frames</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="products-grid-lft">
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p2.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Running Shoes</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p7.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Elevation Jacket</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="products-grd">
-							<div class="p-one simpleCart_shelfItem prd">
-								<a href="single.php">
-										<img src="images/p9.jpg" alt="" class="img-responsive" />
-								</a>
-								<h4>Lifestyle Shoes</h4>
-								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">$729</span></a></p>
-								<div class="pro-grd">
-									<a href="single.php">Quick View</a>
-								</div>
-							</div>	
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+                    <?php
+
+                            }?>
+
 				</div>
 				<div class="col-md-4 products-grid-right">
-					<div class="w_sidebar">
-						<div class="w_nav1">
-							<h4>All</h4>
-							<ul>
-								<li><a href="product.php">women</a></li>
-								<li><a href="#">new fashions</a></li>
-								<li><a href="#">trends</a></li>
-								<li><a href="#">boys</a></li>
-								<li><a href="#">girls</a></li>
-								<li><a href="#">sale</a></li>
-							</ul>	
-						</div>
-						<section  class="sky-form">
-							<h4>catogories</h4>
-							<div class="row1 scroll-pane">
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Men's Jackets</label>
-								</div>
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Shoes</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Glases</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Watches</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Hand Bags</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>Bags</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>shirts</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>tempore</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>soluta nobis</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>molestiae</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>repudiandae sint</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>nobis est</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>assumenda est</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Anouk</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>tempore</label>
-								</div>
-							</div>
-						</section>
-						<section  class="sky-form">
-							<h4>brand</h4>
-							<div class="row1 scroll-pane">
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Lee</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Anouk</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>tempore</label>
-								</div>
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>vishud</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>amari</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>shree</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Anouk</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>biba</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>shree</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Anouk</label>																							
-								</div>
-							</div>
-						</section>
-					</div>
+                    <div class="w_sidebar">
+
+                        <section  class="sky-form">
+                            <h4>catogories</h4>
+                            <div class="row1 scroll-pane">
+                                <div class="col col-4">
+                                    <?php
+                                    foreach ($catObj->getAll() as $key => $value) { ?>
+                                        <label class="checkbox"><input type="checkbox"  class="checkCat" name="<?=$value['id']?>"><i></i><?=$value['name']?></label>
+
+                                  <?php  }
+                                    ?>
+                                </div>
+                                <script>
+                                    $(function () {
+                                        $(".checkCat").on("change",function (e) {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+//                                                    alert('checked');
+                                            $.ajax({
+                                                url:"productByCategory.php?cat_id="+$(this).attr("name"),
+                                                method:"GET",
+                                                success:function (data) {
+//                                                            alert(JSON.parse(data));
+                                                    $("#mainProducts").text("");
+
+                                                    $.ajax({
+                                                        url:"product.php",
+                                                        method:"POST",
+                                                        data:{data:data},
+                                                        success:function (obj) {
+                                                            alert(obj)
+                                                        }
+
+                                                    })
+
+                                                }
+                                            })
+
+                                        })
+                                    })
+                                </script>
+                            </div>
+                        </section>
+                        <section  class="sky-form">
+                            <h4>brand</h4>
+                            <div class="row1 scroll-pane">
+                                <div class="col col-4">
+                                    <?php
+                                    foreach ($subCatObj->getAll() as $key => $value) { ?>
+                                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i><?=$value['name']?></label>
+                                  <?php  }
+                                    ?>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
