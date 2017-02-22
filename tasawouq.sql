@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 17, 2017 at 05:05 AM
+-- Generation Time: Feb 22, 2017 at 04:35 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
--- PHP Version: 7.0.8-0ubuntu0.16.04.3
+-- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,7 +69,8 @@ CREATE TABLE `Contacts` (
 --
 
 INSERT INTO `Contacts` (`id`, `name`, `email`, `message`, `is_valid`) VALUES
-(1, 'ahmed', 'ahmed@email.com', 'asa asasas asas as asas ass as as as as as as ', 0);
+(1, 'ahmed', 'ahmed@email.com', 'asa asasas asas as asas ass as as as as as as ', 0),
+(2, 'azhary', 'modh', 'goooooooooood', 0);
 
 -- --------------------------------------------------------
 
@@ -186,7 +187,9 @@ INSERT INTO `Shopping_List` (`id`, `user_id`, `product_id`, `quantity`, `total_p
 (38, 14, 5, 1, 729, 0, '2017-02-17', '2017-02-17'),
 (39, 14, 4, 1, 720, 0, '2017-02-17', '2017-02-17'),
 (40, 14, 4, 1, 720, 0, '2017-02-17', '2017-02-17'),
-(41, 14, 4, 2, 720, 0, '2017-02-17', '2017-02-17');
+(41, 14, 4, 2, 720, 0, '2017-02-17', '2017-02-17'),
+(42, 14, 4, 1, 720, 0, '2017-02-18', '2017-02-18'),
+(43, 14, 4, 2, 720, 1, '2017-02-22', '2017-02-22');
 
 -- --------------------------------------------------------
 
@@ -248,7 +251,7 @@ CREATE TABLE `Users` (
 INSERT INTO `Users` (`id`, `fname`, `lname`, `password`, `birthday`, `job`, `email`, `credit_limit`, `address`, `interests`, `is_admin`, `is_valid`, `created_at`, `updated_at`) VALUES
 (1, 'anas', 'hossam', '72019bbac0b3dac88beac9ddfef0ca808919104f', '1992-03-17', '', 'admin@tasawouq.com', 10000, '', '', 1, 1, '2017-02-07 22:00:00', '2017-02-07 22:00:00'),
 (2, 'ahmed', 'samir', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '2017-02-01', '', 'ahmed@yahoo.com', 10000, '', '', 0, 0, '2017-02-09 22:00:00', '2017-02-09 22:00:00'),
-(14, 'abdallah', 'ghanim', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '1992-03-01', 'softeng', 'abdo@yahoo.com', 10000, 'manzala', '', 0, 1, '2017-02-13 18:09:20', '2017-02-13 18:09:20'),
+(14, 'abdallah', 'ghanim', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '1992-03-01', 'softeng', 'abdo@yahoo.com', 9280, 'manzala', '', 0, 1, '2017-02-13 18:09:20', '2017-02-13 18:09:20'),
 (15, 'maha', 'elrayis', 'c0cd0ea92bad8b8a6c3a08e6b06a9e495dce8200', '1993-01-01', 'doctor', 'maha@ss.com', 10000, 'portsaid', '', 0, 1, '2017-02-14 14:36:37', '2017-02-14 14:36:37');
 
 --
@@ -317,7 +320,7 @@ ALTER TABLE `Categories`
 -- AUTO_INCREMENT for table `Contacts`
 --
 ALTER TABLE `Contacts`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `Interests`
 --
@@ -337,7 +340,7 @@ ALTER TABLE `Settings`
 -- AUTO_INCREMENT for table `Shopping_List`
 --
 ALTER TABLE `Shopping_List`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `Sub_categories`
 --
